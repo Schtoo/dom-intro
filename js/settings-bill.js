@@ -21,73 +21,62 @@ var totalSettings = document.querySelector('.totalSettings');
 
 var totalCalls = 0;
 var totalSms = 0;
-
-
+var totalCosts = 0;
 
 function addBtnClicked() {
   var checkdRdioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
   var billItemTypeWithSettings = checkdRdioBtn.value.trim();
   if (billItemTypeWithSettings === 'call') {
-    totalCalls += callCost;
+    //  totalCalls += callCost;
+    if (totalCosts < critical) {
+      totalCalls += callCost;
+    }
   } else if (billItemTypeWithSettings === 'sms') {
-    totalSms += smsCost;
+    //  totalSms += smsCost;
+    if (totalCosts < critical) {
+      totalSms += smsCost;
+    }
   }
 
   callTotalSettings.innerHTML = totalCalls.toFixed(2);
   smsTotalSettings.innerHTML = totalSms.toFixed(2);
-  var totalCosts = totalCalls + totalSms;
+  totalCosts = totalCalls + totalSms;
   totalSettings.innerHTML = totalCosts.toFixed(2);
 
-  if (totalCosts >= warningLevel) {
+  if (totalCosts >= warning) {
     totalSettings.classList.add('warning');
-  } else if (totalCosts >= criticalLevel) {
+  }
+  if (totalCosts >= critical) {
     totalSettings.classList.add('danger');
   }
+  if (totalCosts >= critical) {
+    totalSettings.classList.add('danger');
+    totalSettings.classList.remove('warning');
+  }
+
 }
 
 function updateValues() {
-
   var newCallCost = callCostSetting.value;
   if (newCallCost !== "") {
     callCost = parseFloat(newCallCost);
   }
   var newSmsCost = smsCostSetting.value;
-  if (newCallCost !== "") {
+  if (newSmsCost !== "") {
     smsCost = parseFloat(newSmsCost);
   }
   var newWarning = warningLevel.value;
-  if (newCallCost !== "") {
+  if (newWarning !== "") {
     warning = parseFloat(newWarning);
   }
   var newCritical = criticalLevel.value;
-  if (newCallCost !== "") {
+  if (newCritical !== "") {
     critical = parseFloat(newCritical);
   }
-
 }
 
-// function addBtnClicked() {
-//   var checkdRdioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-//   if (checkdRdioBtn) {
-//     var billItemTypeWithSetting = checkdRdioBtn.value;
-//   }
-//   if (billItemTypeWithSetting === 'call') {
-//     callCost += totalCost;
-//   }
-//   if (billItemTypeWithSetting === 'sms') {
-//     smsCost += totalSms;
-//   }
-//   callTotalSettings.innerHTML = totalCalls.toFixed(2);
-//   smsTotalSettings.innerHTML = totalSms.toFixed(2);
-//   var Costs = totalCalls + totalSms;
-//   totalSettings.innerHTML = Costs.toFixed(2);
-// }
-// // billItemType will be 'call' or 'sms'
-//
-// //add an event listener for when the 'Update settings' button is pressed
-//addBtn.addEventListener('click', updateBtn);
-//add an event listener for when the add button is pressed
 addBtn.addEventListener('click', addBtnClicked);
+
 updateSettings.addEventListener('click', updateValues);
 //in the event listener get the value from the billItemTypeRadio radio buttons
 // * add the appropriate value to the call / sms total
