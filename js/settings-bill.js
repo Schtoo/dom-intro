@@ -26,8 +26,7 @@ var totalCosts = 0;
 function addBtnClicked() {
   var checkdRdioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
   var billItemTypeWithSettings = checkdRdioBtn.value.trim();
-  if (billItemTypeWithSettings === 'call') { <<
-    << << < HEAD
+  if (billItemTypeWithSettings === 'call') {
     //totalCalls += callCost;
     if (totalCosts < critical) {
       totalCalls += callCost;
@@ -36,7 +35,6 @@ function addBtnClicked() {
     // totalSms += smsCost;
     if (totalCosts < critical) {
       totalSms += smsCost; ===
-      === =
       //  totalCalls += callCost;
       if (totalCosts < critical) {
         totalCalls += callCost;
@@ -45,14 +43,13 @@ function addBtnClicked() {
       //  totalSms += smsCost;
       if (totalCosts < critical) {
         totalSms += smsCost;
-      } >>>
-      >>> >
+      }
     }
   }
   callTotalSettings.innerHTML = totalCalls.toFixed(2);
   smsTotalSettings.innerHTML = totalSms.toFixed(2);
-  totalCosts = totalCalls + totalSms; <<
-  << << < HEAD
+  totalCosts = totalCalls + totalSms;
+
   totalSettings.innerHTML = totalCosts.toFixed(2);
 
   if (totalCosts >= warning && totalCosts >= critical) {
@@ -66,8 +63,8 @@ function addBtnClicked() {
   if (totalCosts < warning && totalCosts < critical) {
     totalSettings.classList.remove('warning');
     totalSettings.classList.remove('danger');
-  } ===
-  === =
+  }
+
   totalSettings.innerHTML = totalCosts.toFixed(2);
 
   if (totalCosts >= warning) {
@@ -81,8 +78,6 @@ function addBtnClicked() {
     totalSettings.classList.remove('warning');
   }
 
-  >>>
-  >>> >
 }
 
 function updateValues() {
