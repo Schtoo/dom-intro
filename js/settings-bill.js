@@ -34,7 +34,7 @@ function addBtnClicked() {
   } else if (billItemTypeWithSettings === 'sms') {
     // totalSms += smsCost;
     if (totalCosts < critical) {
-      totalSms += smsCost; ===
+      totalSms += smsCost;
       //  totalCalls += callCost;
       if (totalCosts < critical) {
         totalCalls += callCost;
@@ -49,7 +49,6 @@ function addBtnClicked() {
   callTotalSettings.innerHTML = totalCalls.toFixed(2);
   smsTotalSettings.innerHTML = totalSms.toFixed(2);
   totalCosts = totalCalls + totalSms;
-
   totalSettings.innerHTML = totalCosts.toFixed(2);
 
   if (totalCosts >= warning && totalCosts >= critical) {
@@ -64,7 +63,6 @@ function addBtnClicked() {
     totalSettings.classList.remove('warning');
     totalSettings.classList.remove('danger');
   }
-
   totalSettings.innerHTML = totalCosts.toFixed(2);
 
   if (totalCosts >= warning) {
@@ -77,7 +75,6 @@ function addBtnClicked() {
     totalSettings.classList.add('danger');
     totalSettings.classList.remove('warning');
   }
-
 }
 
 function updateValues() {
