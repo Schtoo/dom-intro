@@ -26,24 +26,16 @@ var totalCosts = 0;
 function addBtnClicked() {
   var checkdRdioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
   var billItemTypeWithSettings = checkdRdioBtn.value.trim();
+  if (billItemTypeWithSettings === 'sms') {
+    //  totalSms += smsCost;
+    if (totalCosts < critical) {
+      totalSms += smsCost;
+    }
+  }
   if (billItemTypeWithSettings === 'call') {
     //totalCalls += callCost;
     if (totalCosts < critical) {
       totalCalls += callCost;
-    }
-  } else if (billItemTypeWithSettings === 'sms') {
-    // totalSms += smsCost;
-    if (totalCosts < critical) {
-      totalSms += smsCost;
-      //  totalCalls += callCost;
-      if (totalCosts < critical) {
-        totalCalls += callCost;
-      }
-    } else if (billItemTypeWithSettings === 'sms') {
-      //  totalSms += smsCost;
-      if (totalCosts < critical) {
-        totalSms += smsCost;
-      }
     }
   }
   callTotalSettings.innerHTML = totalCalls.toFixed(2);
