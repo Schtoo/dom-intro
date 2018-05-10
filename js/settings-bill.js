@@ -26,21 +26,48 @@ var totalCosts = 0;
 function addBtnClicked() {
   var checkdRdioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
   var billItemTypeWithSettings = checkdRdioBtn.value.trim();
-  if (billItemTypeWithSettings === 'call') {
-    //  totalCalls += callCost;
+  if (billItemTypeWithSettings === 'call') { <<
+    << << < HEAD
+    //totalCalls += callCost;
     if (totalCosts < critical) {
       totalCalls += callCost;
     }
   } else if (billItemTypeWithSettings === 'sms') {
-    //  totalSms += smsCost;
+    // totalSms += smsCost;
     if (totalCosts < critical) {
-      totalSms += smsCost;
+      totalSms += smsCost; ===
+      === =
+      //  totalCalls += callCost;
+      if (totalCosts < critical) {
+        totalCalls += callCost;
+      }
+    } else if (billItemTypeWithSettings === 'sms') {
+      //  totalSms += smsCost;
+      if (totalCosts < critical) {
+        totalSms += smsCost;
+      } >>>
+      >>> >
     }
   }
-
   callTotalSettings.innerHTML = totalCalls.toFixed(2);
   smsTotalSettings.innerHTML = totalSms.toFixed(2);
-  totalCosts = totalCalls + totalSms;
+  totalCosts = totalCalls + totalSms; <<
+  << << < HEAD
+  totalSettings.innerHTML = totalCosts.toFixed(2);
+
+  if (totalCosts >= warning && totalCosts >= critical) {
+    totalSettings.classList.add('warning');
+    totalSettings.classList.add('danger');
+  }
+  if (totalCosts <= critical && totalCosts >= warning) {
+    totalSettings.classList.remove('danger');
+    totalSettings.classList.add('warning');
+  }
+  if (totalCosts < warning && totalCosts < critical) {
+    totalSettings.classList.remove('warning');
+    totalSettings.classList.remove('danger');
+  } ===
+  === =
   totalSettings.innerHTML = totalCosts.toFixed(2);
 
   if (totalCosts >= warning) {
@@ -54,6 +81,8 @@ function addBtnClicked() {
     totalSettings.classList.remove('warning');
   }
 
+  >>>
+  >>> >
 }
 
 function updateValues() {
