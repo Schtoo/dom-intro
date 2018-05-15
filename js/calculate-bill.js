@@ -34,6 +34,6 @@ billStringElement.addEventListener('click',
     } else if (roundedBillTotal > 30.00) {
       billTotalElement.classList.remove('warning');
       billTotalElement.classList.add('danger');
-    }
-  }
+    };
+  };
 );

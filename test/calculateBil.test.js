@@ -7,5 +7,5 @@ describe('calculate bill', function() {
   });
   it('should give you the total for both sms & call', function(){
     assert.equal(calculateBtnClicked('sms, call, sms, call'),7.00);
-  });
-});
+  })
+})
