@@ -87,7 +87,6 @@ function updateValues() {
     critical = parseFloat(newCritical);
   }
 }
-
 addBtn.addEventListener('click', addBtnClicked);
 
 updateSettings.addEventListener('click', updateValues);
