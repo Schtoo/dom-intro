@@ -13,26 +13,30 @@ var allCalculations = Bills();
 
 function addToBillBtnClicked() {
   var billTypeEntered = billElement.value.trim();
-  allCalculations.Type(billTypeEntered)
-  // if (billTypeEntered === 'call') {
-  //   callTotal += 2.75;
-  // } else if (billTypeEntered === 'sms') {
-  //   smssTotal += 0.75;
-  // }
+  allCalculations.Type(billTypeEntered);
   callsTotal.innerHTML = allCalculations.CallSum().toFixed(2);
   smsTotal.innerHTML = allCalculations.SmsSum().toFixed(2);
-  //  totalCost = callTotal + smssTotal;
   billTotal.innerHTML = allCalculations.TotalCalc().toFixed(2);
+}
 
-  if (allCalculations.TotalCalc() >= 30.00) {
+function behaviour() {
+  var whenReached = allCalculations.TotalCalc();
+  if (whenReached >= 30) {
     billTotal.classList.add('warning');
   }
-  if (allCalculations.TotalCalc() >= 50.00) {
+  if (whenReached >= 50) {
+    billTotal.classList.remove('warning');
     billTotal.classList.add('danger');
   }
 }
+
 //add an event listener for when the add button is pressed
-billBtn.addEventListener('click', addToBillBtnClicked);
+billBtn.addEventListener('click',
+  function() {
+    addToBillBtnClicked();
+    behaviour();
+  }
+);
 //in the event listener check if the value in the bill type textbox is 'sms' or 'call'
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.

@@ -1,29 +1,27 @@
 function Bills() {
-  callTotal = 0;
-  smsTotal = 0;
-  totalCost = 0;
+  var callTotal = 0;
+  var smsTotal = 0;
+  var totalCost = 0;
 
   function Type(billElement) {
-    var text = billElement;
-    if (text === 'call') {
+    if (billElement === 'call') {
       callTotal += 2.75;
-    }
-    if (text === 'sms') {
+    } else if (billElement === 'sms') {
       smsTotal += 0.75;
     }
   }
 
   function CallSum() {
-    return callTotal;
+    return callTotal.toFixed(2);
   }
 
   function SmsSum() {
-    return smsTotal;
+    return smsTotal.toFixed(2);
   }
 
   function TotalCalc() {
     totalCost = callTotal + smsTotal;
-    return totalCost;
+    return totalCost.toFixed(2);
   }
   return {
     Type,
