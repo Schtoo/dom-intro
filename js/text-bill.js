@@ -29,7 +29,6 @@ function behaviour() {
     billTotal.classList.add('danger');
   }
 }
-
 //add an event listener for when the add button is pressed
 billBtn.addEventListener('click',
   function() {
