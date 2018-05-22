@@ -19,9 +19,11 @@ var callTotalSettings = document.querySelector('.callTotalSettings');
 var smsTotalSettings = document.querySelector('.smsTotalSettings');
 var totalSettings = document.querySelector('.totalSettings');
 
-var totalCalls = 0;
-var totalSms = 0;
-var totalCosts = 0;
+// var totalCalls = 0;
+// var totalSms = 0;
+// var totalCosts = 0;
+
+var calculating = allBills();
 
 function addBtnClicked() {
   var checkdRdioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
