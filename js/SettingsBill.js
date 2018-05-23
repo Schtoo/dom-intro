@@ -1,4 +1,4 @@
-function allBills() {
+function Settings() {
   var warningLevels = 0;
   var criticalLevels = 0;
   var callCost = 0;
@@ -48,7 +48,7 @@ function allBills() {
   }
 
   function BothEqual() {
-    totals = allCalls + allSms;
+    totals = allCallsTotals + allSmsTotals;
     return totals.toFixed(2);
   }
   return {

@@ -19,31 +19,18 @@ var callTotalSettings = document.querySelector('.callTotalSettings');
 var smsTotalSettings = document.querySelector('.smsTotalSettings');
 var totalSettings = document.querySelector('.totalSettings');
 
-// var totalCalls = 0;
-// var totalSms = 0;
-// var totalCosts = 0;
-
-var calculating = allBills();
+var factorySettings = Settings();
 
 function addBtnClicked() {
   var checkdRdioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-  var billItemTypeWithSettings = checkdRdioBtn.value.trim();
-  if (billItemTypeWithSettings === 'sms') {
-    //  totalSms += smsCost;
-    if (totalCosts < critical) {
-      totalSms += smsCost;
-    }
+  if (checkdRdioBtn) {
+    var billItemTypeWithSettings = checkdRdioBtn.value.trim();
+    factorySettings.WhichType(billItemTypeWithSettings);
   }
-  if (billItemTypeWithSettings === 'call') {
-    //totalCalls += callCost;
-    if (totalCosts < critical) {
-      totalCalls += callCost;
-    }
-  }
-  callTotalSettings.innerHTML = totalCalls.toFixed(2);
-  smsTotalSettings.innerHTML = totalSms.toFixed(2);
-  totalCosts = totalCalls + totalSms;
-  totalSettings.innerHTML = totalCosts.toFixed(2);
+  callTotalSettings.innerHTML = factorySettings.Calls();
+  smsTotalSettings.innerHTML = factorySettings.Sms();
+  // totalCosts = totalCalls + totalSms;
+  totalSettings.innerHTML = factorySettings.BothEqual();
 
   if (totalCosts >= warning && totalCosts >= critical) {
     totalSettings.classList.add('warning');
@@ -89,9 +76,15 @@ function updateValues() {
     critical = parseFloat(newCritical);
   }
 }
-addBtn.addEventListener('click', addBtnClicked);
+addBtn.addEventListener('click',
+  function() {
+    addBtnClicked();
+  });
 
-updateSettings.addEventListener('click', updateValues);
+updateSettings.addEventListener('click',
+  function() {
+    updateValues();
+  });
 //in the event listener get the value from the billItemTypeRadio radio buttons
 // * add the appropriate value to the call / sms total
 // * add the appropriate value to the overall total
