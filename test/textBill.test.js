@@ -2,13 +2,13 @@ describe('TextBill function', function() {
   it("should give you the total of calls  made", function() {
     var callsDone = Bills();
     callsDone.Type('call');
-    console.log(callsDone.TotalCalc())
+    //console.log(callsDone.TotalCalc())
     assert.equal(callsDone.CallSum(), 2.75)
   });
   it("should give you the total of sms's made", function() {
     var smsDone = Bills();
     smsDone.Type('sms');
-    console.log(smsDone.SmsSum());
+    //console.log(smsDone.SmsSum());
     assert.equal(smsDone.SmsSum(), 0.75)
   });
   it("should give you the total for both calls & sms's", function() {
@@ -19,7 +19,7 @@ describe('TextBill function', function() {
     combined.Type('sms');
     combined.Type('sms');
     combined.Type('sms');
-    console.log(combined.TotalCalc());
+    //console.log(combined.TotalCalc());
     assert.equal(combined.TotalCalc(), 10.50);
   });
 });

@@ -1,83 +1,71 @@
 function Settings() {
-  var warningLevels = 0;
-  var criticalLevels = 0;
   var callCost = 0;
   var smsCost = 0;
-
-  var allCallsTotals = 0;
-  var allSmsTotals = 0;
+  var callValue = 0;
+  var smsValue = 0;
+  var warningValue = 0;
+  var criticalValue = 0;
   var totals = 0;
 
-  function WhichType(settingsField) {
-    if (settingsField === 'call') {
-      //allCalls += 2.75;
-      if (totals < criticalLevels) {
-        allCallsTotals += callCost;
-      }
+  function WhichType(checkedBill) {
+    if (totals > criticalValue) {
+      return;
     }
-    if (settingsField === 'sms') {
-      //allSms += 0.75;
-      if (totals < criticalLevels) {
-        allSmsTotals += smsCost;
-      }
+    if (checkedBill === 'call') {
+      callValue += callCost;
+    }
+    if (checkedBill === 'sms') {
+      smsValue += smsCost;
     }
   }
 
-  function CallCo() {
-    return callCost.toFixed(2);
+  function UpdateValues(call, sms) {
+    callCost = parseFloat(call);
+    smsCost = parseFloat(sms);
   }
 
-  function SmsCo() {
-    return smsCost.toFixed(2);
+  function UpdateAlerts(warning, danger) {
+    warningValue = parseFloat(warning);
+    criticalValue = parseFloat(danger);
   }
 
-  function OrangeLevel() {
-    return warningLevel.toFixed(2);
-  }
-
-  function RedLevel() {
-    return criticalLevel.toFixed(2);
+  function totalAlert() {
+    if (totals > criticalValue) {
+      return "danger";
+    } else if (totals > warningValue) {
+      return "warning";
+    }
   }
 
   function Calls() {
-    return allCalls.toFixed(2);
+    return callValue.toFixed(2);
   }
 
   function Sms() {
-    return allSms.toFixed(2);
+    return smsValue.toFixed(2);
   }
 
   function BothEqual() {
-    totals = allCallsTotals + allSmsTotals;
+    totals = callValue + smsValue;
     return totals.toFixed(2);
   }
+
+  function screenBehaviour() {
+    return warningValue.toFixed(2);
+  }
+
+  function screenAlert() {
+    return criticalValue.toFixed(2);
+  }
   return {
-    CallCo,
-    SmsCo,
-    OrangeLevel,
-    RedLevel,
     WhichType,
     Calls,
     Sms,
-    BothEqual
-  }
-
-  function Pfloats() {
-    var newCalls = callCost.value;
-    if (newCalls !== "") {
-      allCallsTotals = parseFloat(newCalls);
-    }
-    var newSms = smsCost.value;
-    if (newSms !== "") {
-      allSmsTotals = parseFloat(newSms);
-    }
-    var critic = criticalLevels.value;
-    if (critic !== "") {
-      criticalLevels = parseFloat(critic);
-    }
-    var warn = warningLevels.value;
-    if (warn !== "") {
-      warningLevels = parseFloat(warn);
-    }
+    BothEqual,
+    UpdateValues,
+    UpdateAlerts,
+    totalAlert,
+    screenBehaviour,
+    screenAlert
   }
 }
